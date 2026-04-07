@@ -1,3 +1,22 @@
+<script setup>
+import FeatureCard from '../components/FeatureCard.vue';
+
+const secoes = [
+  {
+    titulo: '1. Inicio',
+    descricao: 'Explica o objetivo da atividade.'
+  },
+  {
+    titulo: '2. Tarefas',
+    descricao: 'Permite criar, listar, editar e excluir tarefas.'
+  },
+  {
+    titulo: '3. Resumo',
+    descricao: 'Mostra totais de tarefas concluidas e pendentes.'
+  }
+];
+</script>
+
 <template>
   <section class="home">
     <h1>Aplicacao SPA com Vue</h1>
@@ -6,20 +25,12 @@
     </p>
 
     <div class="cards">
-      <article class="card">
-        <h2>1. Inicio</h2>
-        <p>Explica o objetivo da atividade.</p>
-      </article>
-
-      <article class="card">
-        <h2>2. Tarefas</h2>
-        <p>Permite criar, listar, editar e excluir tarefas.</p>
-      </article>
-
-      <article class="card">
-        <h2>3. Resumo</h2>
-        <p>Mostra totais de tarefas concluidas e pendentes.</p>
-      </article>
+      <FeatureCard
+        v-for="secao in secoes"
+        :key="secao.titulo"
+        :titulo="secao.titulo"
+        :descricao="secao.descricao"
+      />
     </div>
   </section>
 </template>
@@ -38,18 +49,5 @@
   gap: 1rem;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   margin-top: 1.2rem;
-}
-
-.card {
-  background: #fff;
-  border-radius: 12px;
-  border: 1px solid #d8e0ef;
-  padding: 1rem;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
-}
-
-.card h2 {
-  margin-top: 0;
-  font-size: 1.1rem;
 }
 </style>
